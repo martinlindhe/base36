@@ -35,11 +35,15 @@ var (
 func Encode(value uint64) string {
 	var res [16]byte
 	var i int
-	for i = len(res) - 1; value != 0; i-- {
+	for i = len(res) - 1; ; i-- {
 		res[i] = base36[value%36]
 		value /= 36
+		if value == 0 {
+			break
+		}
 	}
-	return string(res[i+1:])
+
+	return string(res[i:])
 }
 
 // Decode decodes a base36-encoded string.

@@ -3,7 +3,10 @@ package base36_test
 import (
 	"fmt"
 
-	"github.com/martinlindhe/base36"
+	// change depending on which github account the package belongs to 
+	//"github.com/martinlindhe/base36"
+	"github.com/buzzfrog/base36"
+
 )
 
 func ExampleEncode() {
