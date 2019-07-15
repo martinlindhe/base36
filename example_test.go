@@ -3,9 +3,7 @@ package base36_test
 import (
 	"fmt"
 
-	// change depending on which github account the package belongs to 
-	//"github.com/martinlindhe/base36"
-	"github.com/buzzfrog/base36"
+	"github.com/martinlindhe/base36"
 
 )
 
