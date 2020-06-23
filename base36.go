@@ -88,7 +88,7 @@ func Decode(s string) uint64 {
 	}
 	res := uint64(0)
 	l := len(s) - 1
-	for idx := range s {
+	for idx := 0; idx < len(s); idx++ {
 		c := s[l-idx]
 		res += uint8Index[c] * pow36Index[idx]
 	}
