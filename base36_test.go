@@ -29,6 +29,21 @@ func TestDecode(t *testing.T) {
 	}
 }
 
+func TestDecodeToBytes(t *testing.T) {
+	// ensure that lowercase encoded string decodes correctly
+	// https://github.com/martinlindhe/base36/issues/8
+
+	in := []byte("Hello World")
+
+	encoded := EncodeBytes(in)
+
+	decoded := DecodeToBytes(encoded)
+	assert.Equal(t, decoded, in)
+
+	decodedLower := DecodeToBytes(strings.ToLower(encoded))
+	assert.Equal(t, decodedLower, in)
+}
+
 func BenchmarkEncode(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		Encode(5481594952936519619)

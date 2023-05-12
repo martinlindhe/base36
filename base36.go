@@ -134,6 +134,7 @@ func EncodeBytes(b []byte) string {
 
 // DecodeToBytes decodes a base36 string to a byte slice, using alphabet.
 func DecodeToBytes(b string) []byte {
+	b = strings.ToUpper(b)
 	alphabet := string(base36)
 	answer := big.NewInt(0)
 	j := big.NewInt(1)
