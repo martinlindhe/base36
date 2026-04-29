@@ -44,6 +44,23 @@ func TestDecodeToBytes(t *testing.T) {
 	assert.Equal(t, decodedLower, in)
 }
 
+func TestDecodeBytesWithLeadingAndTrailingZeroes(t *testing.T) {
+	raw := []struct {
+		in  []byte
+		out string
+	}{
+		{[]byte{0, 1, 2}, "076"},
+		{[]byte{1, 2, 0}, "1EYO"},
+	}
+	for _, d := range raw {
+		enc := EncodeBytes(d.in)
+		assert.Equal(t, d.out, enc)
+
+		dec := DecodeToBytes(enc)
+		assert.Equal(t, d.in, dec)
+	}
+}
+
 func BenchmarkEncode(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		Encode(5481594952936519619)
